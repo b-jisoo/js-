@@ -3,11 +3,10 @@ const app = express();
 const port = 4000;
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-
 const config = require("./config/key");
-
 const { auth } = require("./middleware/auth");
-const { User } = require("./models/user");
+const { User } = require("./models/User");
+
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 //application/json
@@ -79,6 +78,21 @@ app.get("/auth", auth, (req, res) => {
     role: req.user.role,
     image: req.user.image,
   });
+});
+
+app.get("/logout", auth, (req, res) => {
+  //auth 미들웨어에서 가져와서 데이터를 찾는다
+  User.findOneAndUpdate(
+    { _id: req.user._id },
+    //토큰을 지워준다
+    { token: "" },
+    (err, user) => {
+      if (err) return res.json({ success: false, err });
+      return res.status(200).send({
+        success: true,
+      });
+    }
+  );
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
