@@ -6,12 +6,14 @@ const cookieParser = require("cookie-parser");
 const config = require("./config/key");
 const { auth } = require("./middleware/auth");
 const { User } = require("./models/User");
+const cors = require("cors");
 
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 //application/json
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(cors());
 
 const mongoose = require("mongoose");
 // 몽고 DB 연결, 실패시 에러 출력
