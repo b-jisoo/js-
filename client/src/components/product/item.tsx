@@ -1,5 +1,6 @@
 import { Product } from "../../type";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Item = styled.li`
   border: 1px solid #000;
@@ -12,22 +13,16 @@ const Image = styled.img`
   object-fit: contain;
 `;
 
-const ProductItem = ({
-  category,
-  description,
-  image,
-  price,
-  rating,
-  title,
-}: Product) => {
+const ProductItem = ({ category, id, image, price, title }: Product) => {
   return (
     <Item>
-      <p>{category}</p>
+      <Link to={`/products/${id}`}>
+        <p>{category}</p>
+      </Link>
       <p>{title}</p>
-
       <Image src={image} />
       <span>${price}</span>
-      <span>{rating.rate}</span>
+      <button>담기</button>
     </Item>
   );
 };
