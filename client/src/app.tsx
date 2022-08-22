@@ -8,15 +8,19 @@ import {
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import GlobalStyle from "./GlobalStyle";
+import { Provider } from "react-redux";
+import { store } from "./redux/cart";
 
 const app = () => {
   const elem = useRoutes(routes);
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
-      <GlobalStyle />
-      <Gnb />
-      {elem}
+      <Provider store={store}>
+        <GlobalStyle />
+        <Gnb />
+        {elem}
+      </Provider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
