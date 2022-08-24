@@ -12,3 +12,9 @@ export type Product = {
 export type Products = {
   Products: Product[];
 };
+
+export type CartPage = {
+  cartItems: Product[];
+  cartTotalQuantity: number;
+  cartTotalAmount: number;
+};

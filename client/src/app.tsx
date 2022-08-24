@@ -9,7 +9,7 @@ import {
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import GlobalStyle from "./GlobalStyle";
 import { Provider } from "react-redux";
-import { store } from "./redux/cart";
+import { store } from "./redux/index";
 
 const app = () => {
   const elem = useRoutes(routes);

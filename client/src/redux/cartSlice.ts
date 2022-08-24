@@ -1,11 +1,7 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-import { Product } from "../type";
+import { createSlice } from "@reduxjs/toolkit";
+import { CartPage } from "../type";
 
-const initialState: {
-  cartItems: Product[];
-  cartTotalQuantity: number;
-  cartTotalAmount: number;
-} = {
+const initialState: CartPage = {
   cartItems: [],
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
@@ -29,15 +25,9 @@ export const cartSlice = createSlice({
         state.cartItems.push(tempProduct);
       }
     },
-    minus: (state, action) => {},
+    minusToCart: (state, action) => {},
   },
 });
 
-export const store = configureStore({
-  reducer: {
-    cart: cartSlice.reducer,
-  },
-});
-
+export default cartSlice;
 export const { addToCart } = cartSlice.actions;
-export default store;
