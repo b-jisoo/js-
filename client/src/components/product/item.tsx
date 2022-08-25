@@ -19,7 +19,7 @@ const ProductItem = (product: Product) => {
   const dispatch = useDispatch();
   //const navigate = useNavigate(); 담기 버튼 클릭시 장바구니 주소로 이동1 (총 2개 주석처리)
 
-  const handlAddToCart = (product: any) => {
+  const handlAddToCart = (product: Product) => {
     dispatch(addToCart(product));
     // navigate("/cart"); 담기 버튼 클릭시 장바구니 주소로 이동2
   };

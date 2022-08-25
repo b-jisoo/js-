@@ -20,7 +20,6 @@ const ProducList = () => {
       path: "/products",
     })
   );
-  console.log(data);
 
   return (
     <div>
