@@ -21,6 +21,9 @@ const Gnb = () => (
       <li>
         <Link to="/cart">장바구니</Link>
       </li>
+      <li>
+        <Link to="/login">로그인</Link>
+      </li>
     </GUb_ul>
   </nav>
 );

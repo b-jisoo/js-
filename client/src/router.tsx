@@ -3,6 +3,8 @@ import Index from "./pages/index";
 import CartIndex from "./pages/cart/index";
 import ProductsIndex from "./pages/products/index";
 import Id from "./pages/products/[id]";
+import Login from "./pages/login";
+import Signup from "./pages/login/signup";
 
 export const routes = [
   {
@@ -13,6 +15,8 @@ export const routes = [
       { path: "/cart", element: <CartIndex />, index: true },
       { path: "/products", element: <ProductsIndex />, index: true },
       { path: "/products/:id", element: <Id /> },
+      { path: "/login", element: <Login />, index: true },
+      { path: "/signup", element: <Signup />, index: true },
     ],
   },
 ];
@@ -22,4 +26,6 @@ export const pages = [
   { route: "/cart" },
   { route: "/products" },
   { route: "/products/:id" },
+  { route: "/login" },
+  { route: "/signup" },
 ];

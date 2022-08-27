@@ -18,3 +18,9 @@ export type CartPage = {
   cartTotalQuantity: number;
   cartTotalAmount: number;
 };
+
+export type getLogin = {
+  id: Number;
+  title: String;
+  name: String;
+};
