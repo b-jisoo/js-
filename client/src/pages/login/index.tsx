@@ -5,6 +5,7 @@ import { getLogin } from "../../type";
 
 const Login = () => {
   const LOGIN_URL = "http://localhost:4000/login";
+  const AUTH_URL = "http://localhost:4000/auth";
 
   // const fetchDate = async () => {
   //   const response = await axios.get(DATABASE_URL);
@@ -24,8 +25,17 @@ const Login = () => {
     const user_password = (
       e.currentTarget.elements.namedItem("pasword") as HTMLInputElement
     ).value;
+    const user_email = (
+      e.currentTarget.elements.namedItem("email") as HTMLInputElement
+    ).value;
 
-    await axios.post(LOGIN_URL, { name: user_id, password: user_password });
+    await axios.post(LOGIN_URL, {
+      name: user_id,
+      password: user_password,
+      email: user_email,
+    });
+    const data = await axios.get(AUTH_URL);
+    console.log(data);
   };
 
   return (
@@ -37,6 +47,9 @@ const Login = () => {
         </div>
         <div>
           <input id="pasword" type="password" placeholder={"비밀번호"} />
+        </div>
+        <div>
+          <input id="email" type="text" placeholder={"이메일"} />
         </div>
         <button>로그인</button>
       </form>
