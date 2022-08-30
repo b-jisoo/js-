@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 
 const SIGNUP_URL = "http://localhost:4000/register";
+axios.defaults.withCredentials = true;
 
 export const Signup = () => {
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -17,13 +18,11 @@ export const Signup = () => {
       e.currentTarget.elements.namedItem("email") as HTMLInputElement
     ).value;
 
-    await axios
-      .post(SIGNUP_URL, {
-        name: user_id,
-        password: user_password,
-        email,
-      })
-      .then();
+    await axios.post(SIGNUP_URL, {
+      name: user_id,
+      password: user_password,
+      email,
+    });
   };
 
   useEffect(() => {}, []);

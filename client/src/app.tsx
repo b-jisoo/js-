@@ -10,10 +10,11 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import GlobalStyle from "./GlobalStyle";
 import { Provider } from "react-redux";
 import { store } from "./redux/index";
+import getClient from "./client";
 
 const app = () => {
   const elem = useRoutes(routes);
-  const queryClient = new QueryClient();
+  const queryClient = getClient();
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>

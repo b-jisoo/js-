@@ -13,7 +13,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //application/json
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(
+  cors({
+    origin: true, // '*' 안됨 -> 정확한 주소 또는 origin: true로 해도 됨
+    credentials: true,
+  })
+);
 
 const mongoose = require("mongoose");
 // 몽고 DB 연결, 실패시 에러 출력

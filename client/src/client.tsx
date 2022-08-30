@@ -18,6 +18,10 @@ const getClient = (() => {
         defaultOptions: {
           queries: {
             staleTime: Infinity,
+            cacheTime: Infinity,
+            refetchOnMount: false,
+            refetchOnReconnect: false,
+            refetchOnWindowFocus: false,
           },
         },
       });

@@ -19,21 +19,23 @@ const Login = () => {
 
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const user_id = (
-      e.currentTarget.elements.namedItem("id") as HTMLInputElement
-    ).value;
-    const user_password = (
-      e.currentTarget.elements.namedItem("pasword") as HTMLInputElement
-    ).value;
-    const user_email = (
-      e.currentTarget.elements.namedItem("email") as HTMLInputElement
-    ).value;
 
-    await axios.post(LOGIN_URL, {
-      name: user_id,
-      password: user_password,
-      email: user_email,
-    });
+    const passwordElement = e.currentTarget.elements.namedItem(
+      "pasword"
+    ) as HTMLInputElement;
+    const emailElement = e.currentTarget.elements.namedItem(
+      "email"
+    ) as HTMLInputElement;
+
+    const user_password = passwordElement.value;
+    const user_email = emailElement.value;
+
+    await axios
+      .post(LOGIN_URL, {
+        password: user_password,
+        email: user_email,
+      })
+      .then((response) => console.log(response));
     const data = await axios.get(AUTH_URL);
     console.log(data);
   };
@@ -43,14 +45,12 @@ const Login = () => {
       로그인페이지 입니다.
       <form onSubmit={onSubmitHandler}>
         <div>
-          <input id="id" type="text" required placeholder={"아이디"} />
+          <input id="email" type="text" placeholder={"이메일"} />
         </div>
         <div>
           <input id="pasword" type="password" placeholder={"비밀번호"} />
         </div>
-        <div>
-          <input id="email" type="text" placeholder={"이메일"} />
-        </div>
+
         <button>로그인</button>
       </form>
       <Link to="/signup">
