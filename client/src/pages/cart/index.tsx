@@ -7,6 +7,7 @@ import { CartPage, Product } from "../../type";
 import CartItem from "./items";
 
 const Cart = () => {
+  console.log("장바구니페이지입니다.");
   const cartData = useSelector((state: RootState) => state.cart);
   //const { cartTotalQuantity } = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();

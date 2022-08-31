@@ -14,12 +14,15 @@ const Products = styled.ul`
 `;
 
 const ProducList = () => {
-  const { data } = useQuery<Product[]>([QueryKey.PRODUCTS], () =>
+  const { data, isLoading } = useQuery<Product[]>([QueryKey.PRODUCTS], () =>
     fetcher({
       method: "GET",
       path: "/products",
     })
   );
+  if (isLoading) return <p>Loading...</p>;
+  if (!data) return null;
+  console.log(data);
 
   return (
     <div>

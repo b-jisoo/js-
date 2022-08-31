@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useMemo } from "react";
 import { useParams } from "react-router";
 import { fetcher, QueryKey } from "../../client";
 import ProductDetail from "../../components/product/detail";
@@ -12,6 +13,7 @@ const ProductDetailPage = () => {
     })
   );
   if (!data) return null;
+  console.log("상세목록페이지입니다.");
   console.log("key", [QueryKey.PRODUCTS, id]);
   console.log("data", data);
 

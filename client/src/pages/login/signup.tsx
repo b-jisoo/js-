@@ -5,6 +5,7 @@ const SIGNUP_URL = "http://localhost:4000/register";
 axios.defaults.withCredentials = true;
 
 export const Signup = () => {
+  console.log("회원가입페이지입니다.");
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
